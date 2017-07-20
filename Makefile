@@ -66,6 +66,8 @@ docker-run:
 
 .PHONY: dependencies
 dependencies:
+	go get -u github.com/docktermj/go-logrus/islog
+	go get -u github.com/docopt/docopt-go
 	go get -u github.com/sirupsen/logrus
 	go get -u github.com/jstemmer/go-junit-report
 

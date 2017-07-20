@@ -60,6 +60,7 @@ ENV GO_PACKAGE="github.com/docktermj/${PROGRAM_NAME}"
 
 # Install dependencies.
 RUN go get github.com/docopt/docopt-go && \
+	go get github.com/docktermj/go-logrus/islog && \
     go get github.com/sirupsen/logrus
 
 # Copy local files from the Git repository.
@@ -104,7 +105,5 @@ RUN fpm \
   /root/gocode/bin/=/usr/bin
 
 # --- Epilog ------------------------------------------------------------------
-
-RUN yum clean all
 
 CMD ["/bin/bash"]

@@ -103,7 +103,7 @@ func main() {
 	printLogs()
 
 	fmt.Printf("\n------ Test 3 --------------------------------------\n\n")
-	
+
 	stdLog()
 
 }
