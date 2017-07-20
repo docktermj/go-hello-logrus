@@ -59,7 +59,8 @@ ENV PATH="${PATH}:/usr/local/go/bin:${GOPATH}/bin"
 ENV GO_PACKAGE="github.com/docktermj/${PROGRAM_NAME}"
 
 # Install dependencies.
-RUN go get github.com/docopt/docopt-go
+RUN go get github.com/docopt/docopt-go && \
+    go get github.com/sirupsen/logrus
 
 # Copy local files from the Git repository.
 COPY . ${GOPATH}/src/${GO_PACKAGE}
