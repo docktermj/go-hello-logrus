@@ -13,6 +13,23 @@ var programName string = "unknown"
 var buildVersion string = "0.0.0"
 var buildIteration string = "0"
 
+type MyFormatter struct {}
+
+
+
+func (f *MyFormatter) Format(entry *log.Entry) ([]byte, error) {
+    
+    data := entry.Data
+    level := entry.Level
+    message := entry.Message
+    time := entry.Time
+    
+    logRecord := fmt.Sprintf("%s, [%s] %s DATA: %+v\n", time, level, message, data)
+
+  return []byte(logRecord), nil
+}
+
+
 // Test IsXXX() guards.
 func testGuards() {
 
@@ -101,6 +118,15 @@ func main() {
 
 	testGuards()
 	printLogs()
+
+	fmt.Printf("\n------ Test 3 --------------------------------------\n\n")
+	
+    log.SetFormatter(new(MyFormatter))
+	fmt.Printf("Log Level: %s Formatter: MyFormatter\n", log.GetLevel().String())
+
+	testGuards()
+	printLogs()
+	
 
 	fmt.Printf("\n------ Test 3 --------------------------------------\n\n")
 
